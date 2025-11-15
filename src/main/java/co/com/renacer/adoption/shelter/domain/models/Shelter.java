@@ -1,6 +1,8 @@
 package co.com.renacer.adoption.shelter.domain.models;
 
 import co.com.renacer.commons.Email;
+import co.com.renacer.commons.Phone;
+import co.com.renacer.commons.Url;
 import co.com.renacer.commons.validations.ValidatorUtils;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,19 +13,20 @@ import java.time.Year;
 
 public class Shelter {
     @NotEmpty @Size(min = 3, max = 100)
-    String name;
+    public String name;
     @NotEmpty @Size(min = 10, max = 500)
-    String description;
+    public String description;
     @NotNull
-    Email email;
-    // TODO: crear value object para representar un phone (Telefono) debería ser obligatorio
-    // TODO: crear value object para representar una URL  (Sitio web) opcional
+    public Email email;
+    @NotNull
+    public Phone phone;
+    public Url url;
     @NotEmpty @Size(max = 200)
-    String address;
+    public String address;
     @NotNull
-    Year foundationYear;
+    public Year foundationYear;
     @NotNull
-    ShelterType type;
+    public ShelterType type;
 
     String facebookProfile;
     String instagramProfile;
@@ -42,6 +45,8 @@ public class Shelter {
         String name,
         String description,
         Email email,
+        Phone phone,
+        Url url,
         String address,
         Year foundationYear,
         ShelterType type,
@@ -56,6 +61,8 @@ public class Shelter {
         this.name = name;
         this.description = description;
         this.email = email;
+        this.phone = phone;
+        this.url = url;
         this.address = address;
         this.foundationYear = foundationYear;
         this.type = type;

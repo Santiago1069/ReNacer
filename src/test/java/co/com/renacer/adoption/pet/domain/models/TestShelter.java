@@ -3,6 +3,8 @@ package co.com.renacer.adoption.pet.domain.models;
 import co.com.renacer.adoption.shelter.domain.models.Shelter;
 import co.com.renacer.adoption.shelter.domain.models.ShelterType;
 import co.com.renacer.commons.Email;
+import co.com.renacer.commons.Phone;
+import co.com.renacer.commons.Url;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +12,7 @@ import java.time.Year;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestShelter {
 
@@ -23,6 +24,8 @@ public class TestShelter {
                     null,
                     null,
                     Email.of("email@email.com"),
+                    new Phone("+57", "3166953158"),
+                    new Url("https://google.com"),
                     "Cualquiera",
                     Year.of(2002),
                     ShelterType.FOUNDATION,
@@ -43,6 +46,41 @@ public class TestShelter {
 
             assertEquals(Set.of("name", "description"), fields);
 
+        }
+    }
+
+    @Test
+    public void expectedObjectToSave(){
+        try{
+            Shelter shelter = new Shelter(
+                    "Huellas aqui",
+                    "Somos una fundacion para ayudar",
+                    Email.of("email@email.com"),
+                    new Phone("+57", "3166953158"),
+                    new Url("https://google.com"),
+                    "Cualquiera",
+                    Year.of(2002),
+                    ShelterType.FOUNDATION,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+
+            assertNotNull(shelter);
+
+            assertEquals("Huellas aqui", shelter.name);
+            assertEquals("Somos una fundacion para ayudar", shelter.description);
+            assertEquals(Email.of("email@email.com"), shelter.email);
+            assertEquals(new Phone("+57", "3166953158"), shelter.phone);
+            assertEquals(new Url("https://google.com"), shelter.url);
+            assertEquals("Cualquiera", shelter.address);
+            assertEquals(Year.of(2002), shelter.foundationYear);
+            assertEquals(ShelterType.FOUNDATION, shelter.type);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
