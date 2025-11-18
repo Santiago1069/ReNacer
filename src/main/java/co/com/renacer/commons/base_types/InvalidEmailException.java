@@ -1,4 +1,4 @@
-package co.com.renacer.commons;
+package co.com.renacer.commons.base_types;
 
 public class InvalidEmailException extends RuntimeException{
 

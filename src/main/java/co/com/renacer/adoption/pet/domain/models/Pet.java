@@ -3,6 +3,9 @@ package co.com.renacer.adoption.pet.domain.models;
 import java.time.LocalDate;
 import java.util.UUID;
 
+// TODO: Agregar validaciones a los campos
+// Crear constructor y validar modelo
+// Crear prueba unitaria
 public class Pet {
     UUID id;
     Breed breed;

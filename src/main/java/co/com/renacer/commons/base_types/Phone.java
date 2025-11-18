@@ -1,4 +1,4 @@
-package co.com.renacer.commons;
+package co.com.renacer.commons.base_types;
 
 import java.util.Objects;
 
@@ -19,15 +19,15 @@ public class Phone {
         this.number = number;
     }
 
-    public String countryCode() {
+    public String getCountryCode() {
         return countryCode;
     }
 
-    public String number() {
+    public String getNumber() {
         return number;
     }
 
-    public String value() {
+    public String getValue() {
         return countryCode + number;
     }
 

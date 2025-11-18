@@ -1,17 +1,22 @@
 package co.com.renacer.adoption.shelter.domain.models;
 
-import co.com.renacer.commons.Email;
-import co.com.renacer.commons.Phone;
-import co.com.renacer.commons.Url;
+import co.com.renacer.commons.base_types.Aggregate;
+import co.com.renacer.commons.base_types.Email;
+import co.com.renacer.commons.base_types.Phone;
+import co.com.renacer.commons.base_types.Url;
 import co.com.renacer.commons.validations.ValidatorUtils;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
 import java.time.Year;
+import java.util.UUID;
 
-public class Shelter {
+public class Shelter extends Aggregate {
+    @NotNull
+    UUID id;
     @NotEmpty @Size(min = 3, max = 100)
     public String name;
     @NotEmpty @Size(min = 10, max = 500)
@@ -55,9 +60,11 @@ public class Shelter {
         String twitterProfile,
         String coverImagePath,
         String logoPath,
-        String schedule
+        String schedule,
+        LocalDateTime now
     ) {
 
+        this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.email = email;
@@ -72,9 +79,12 @@ public class Shelter {
         this.coverImagePath = coverImagePath;
         this.logoPath = logoPath;
         this.schedule = schedule;
+        this.creationDate = now;
+        this.lastUpdateDate = now;
 
         ValidatorUtils.validateOrThrow(this);
     }
+
 }
 
 

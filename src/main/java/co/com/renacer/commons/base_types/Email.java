@@ -1,4 +1,4 @@
-package co.com.renacer.commons;
+package co.com.renacer.commons.base_types;
 
 import java.util.Objects;
 import java.util.regex.Pattern;

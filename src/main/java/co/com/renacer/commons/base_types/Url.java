@@ -1,4 +1,4 @@
-package co.com.renacer.commons;
+package co.com.renacer.commons.base_types;
 
 import java.net.MalformedURLException;
 import java.net.URL;
